@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DD0389E1A85A2C2000B3B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0389D1A85A2C2000B3B80 /* AppDelegate.swift */; };
+		8DD038A31A85A2C2000B3B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD038A11A85A2C2000B3B80 /* Main.storyboard */; };
+		8DD038A51A85A2C2000B3B80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DD038A41A85A2C2000B3B80 /* Images.xcassets */; };
+		8DD038A81A85A2C2000B3B80 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD038A61A85A2C2000B3B80 /* LaunchScreen.xib */; };
+		8DD038B41A85A2C2000B3B80 /* Metal_UniformStreamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038B31A85A2C2000B3B80 /* Metal_UniformStreamingTests.swift */; };
+		8DD038C81A85A32C000B3B80 /* TCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038BD1A85A32C000B3B80 /* TCube.swift */; };
+		8DD038C91A85A32C000B3B80 /* TPlasmaParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038BE1A85A32C000B3B80 /* TPlasmaParams.swift */; };
+		8DD038CA1A85A32C000B3B80 /* TPlasmaTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038BF1A85A32C000B3B80 /* TPlasmaTypes.swift */; };
+		8DD038CB1A85A32C000B3B80 /* TPlasmaUniforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C01A85A32C000B3B80 /* TPlasmaUniforms.swift */; };
+		8DD038CC1A85A32C000B3B80 /* TRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C11A85A32C000B3B80 /* TRenderer.swift */; };
+		8DD038CD1A85A32C000B3B80 /* TTransforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C21A85A32C000B3B80 /* TTransforms.swift */; };
+		8DD038CF1A85A32C000B3B80 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C41A85A32C000B3B80 /* TView.swift */; };
+		8DD038D01A85A32C000B3B80 /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C51A85A32C000B3B80 /* TViewController.swift */; };
+		8DD038D11A85A32C000B3B80 /* plasma.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C61A85A32C000B3B80 /* plasma.metal */; };
+		8DD038D21A85A32C000B3B80 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DD038C71A85A32C000B3B80 /* shaders.metal */; };
+		8DD039601A85A473000B3B80 /* MathBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD039551A85A473000B3B80 /* MathBase.swift */; };
+		8DD039611A85A473000B3B80 /* M2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD039581A85A473000B3B80 /* M2f.swift */; };
+		8DD039621A85A473000B3B80 /* M3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD039591A85A473000B3B80 /* M3f.swift */; };
+		8DD039631A85A473000B3B80 /* M4f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0395A1A85A473000B3B80 /* M4f.swift */; };
+		8DD039641A85A473000B3B80 /* V2f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0395D1A85A473000B3B80 /* V2f.swift */; };
+		8DD039651A85A473000B3B80 /* V3f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0395E1A85A473000B3B80 /* V3f.swift */; };
+		8DD039661A85A473000B3B80 /* V4f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0395F1A85A473000B3B80 /* V4f.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DD038AE1A85A2C2000B3B80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DD038901A85A2C2000B3B80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DD038971A85A2C2000B3B80;
+			remoteInfo = Metal_UniformStreaming;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8DD038981A85A2C2000B3B80 /* Metal_UniformStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metal_UniformStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD0389C1A85A2C2000B3B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DD0389D1A85A2C2000B3B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8DD038A21A85A2C2000B3B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8DD038A41A85A2C2000B3B80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8DD038A71A85A2C2000B3B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8DD038AD1A85A2C2000B3B80 /* Metal_UniformStreamingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Metal_UniformStreamingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD038B21A85A2C2000B3B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DD038B31A85A2C2000B3B80 /* Metal_UniformStreamingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metal_UniformStreamingTests.swift; sourceTree = "<group>"; };
+		8DD038BD1A85A32C000B3B80 /* TCube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCube.swift; sourceTree = "<group>"; };
+		8DD038BE1A85A32C000B3B80 /* TPlasmaParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPlasmaParams.swift; sourceTree = "<group>"; };
+		8DD038BF1A85A32C000B3B80 /* TPlasmaTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPlasmaTypes.swift; sourceTree = "<group>"; };
+		8DD038C01A85A32C000B3B80 /* TPlasmaUniforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPlasmaUniforms.swift; sourceTree = "<group>"; };
+		8DD038C11A85A32C000B3B80 /* TRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRenderer.swift; sourceTree = "<group>"; };
+		8DD038C21A85A32C000B3B80 /* TTransforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTransforms.swift; sourceTree = "<group>"; };
+		8DD038C41A85A32C000B3B80 /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
+		8DD038C51A85A32C000B3B80 /* TViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
+		8DD038C61A85A32C000B3B80 /* plasma.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = plasma.metal; sourceTree = "<group>"; };
+		8DD038C71A85A32C000B3B80 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
+		8DD039551A85A473000B3B80 /* MathBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathBase.swift; sourceTree = "<group>"; };
+		8DD039581A85A473000B3B80 /* M2f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M2f.swift; sourceTree = "<group>"; };
+		8DD039591A85A473000B3B80 /* M3f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M3f.swift; sourceTree = "<group>"; };
+		8DD0395A1A85A473000B3B80 /* M4f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M4f.swift; sourceTree = "<group>"; };
+		8DD0395D1A85A473000B3B80 /* V2f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2f.swift; sourceTree = "<group>"; };
+		8DD0395E1A85A473000B3B80 /* V3f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V3f.swift; sourceTree = "<group>"; };
+		8DD0395F1A85A473000B3B80 /* V4f.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V4f.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD038951A85A2C2000B3B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD038AA1A85A2C2000B3B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8DD0388F1A85A2C2000B3B80 = {
+			isa = PBXGroup;
+			children = (
+				8DD0389A1A85A2C2000B3B80 /* Metal_UniformStreaming */,
+				8DD038B01A85A2C2000B3B80 /* Metal_UniformStreamingTests */,
+				8DD038991A85A2C2000B3B80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8DD038991A85A2C2000B3B80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD038981A85A2C2000B3B80 /* Metal_UniformStreaming.app */,
+				8DD038AD1A85A2C2000B3B80 /* Metal_UniformStreamingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DD0389A1A85A2C2000B3B80 /* Metal_UniformStreaming */ = {
+			isa = PBXGroup;
+			children = (
+				8DD039531A85A473000B3B80 /* Math */,
+				8DD038BD1A85A32C000B3B80 /* TCube.swift */,
+				8DD038BE1A85A32C000B3B80 /* TPlasmaParams.swift */,
+				8DD038BF1A85A32C000B3B80 /* TPlasmaTypes.swift */,
+				8DD038C01A85A32C000B3B80 /* TPlasmaUniforms.swift */,
+				8DD038C11A85A32C000B3B80 /* TRenderer.swift */,
+				8DD038C21A85A32C000B3B80 /* TTransforms.swift */,
+				8DD038C41A85A32C000B3B80 /* TView.swift */,
+				8DD038C51A85A32C000B3B80 /* TViewController.swift */,
+				8DD038C61A85A32C000B3B80 /* plasma.metal */,
+				8DD038C71A85A32C000B3B80 /* shaders.metal */,
+				8DD0389D1A85A2C2000B3B80 /* AppDelegate.swift */,
+				8DD038A11A85A2C2000B3B80 /* Main.storyboard */,
+				8DD038A41A85A2C2000B3B80 /* Images.xcassets */,
+				8DD038A61A85A2C2000B3B80 /* LaunchScreen.xib */,
+				8DD0389B1A85A2C2000B3B80 /* Supporting Files */,
+			);
+			path = Metal_UniformStreaming;
+			sourceTree = "<group>";
+		};
+		8DD0389B1A85A2C2000B3B80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8DD0389C1A85A2C2000B3B80 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8DD038B01A85A2C2000B3B80 /* Metal_UniformStreamingTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DD038B31A85A2C2000B3B80 /* Metal_UniformStreamingTests.swift */,
+				8DD038B11A85A2C2000B3B80 /* Supporting Files */,
+			);
+			path = Metal_UniformStreamingTests;
+			sourceTree = "<group>";
+		};
+		8DD038B11A85A2C2000B3B80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8DD038B21A85A2C2000B3B80 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8DD039531A85A473000B3B80 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				8DD039541A85A473000B3B80 /* MathBase */,
+				8DD039561A85A473000B3B80 /* Matrices */,
+				8DD0395B1A85A473000B3B80 /* Vectors */,
+			);
+			name = Math;
+			path = Shared/Math;
+			sourceTree = "<group>";
+		};
+		8DD039541A85A473000B3B80 /* MathBase */ = {
+			isa = PBXGroup;
+			children = (
+				8DD039551A85A473000B3B80 /* MathBase.swift */,
+			);
+			path = MathBase;
+			sourceTree = "<group>";
+		};
+		8DD039561A85A473000B3B80 /* Matrices */ = {
+			isa = PBXGroup;
+			children = (
+				8DD039571A85A473000B3B80 /* Mat_Float */,
+			);
+			path = Matrices;
+			sourceTree = "<group>";
+		};
+		8DD039571A85A473000B3B80 /* Mat_Float */ = {
+			isa = PBXGroup;
+			children = (
+				8DD039581A85A473000B3B80 /* M2f.swift */,
+				8DD039591A85A473000B3B80 /* M3f.swift */,
+				8DD0395A1A85A473000B3B80 /* M4f.swift */,
+			);
+			path = Mat_Float;
+			sourceTree = "<group>";
+		};
+		8DD0395B1A85A473000B3B80 /* Vectors */ = {
+			isa = PBXGroup;
+			children = (
+				8DD0395C1A85A473000B3B80 /* VecFloat */,
+			);
+			path = Vectors;
+			sourceTree = "<group>";
+		};
+		8DD0395C1A85A473000B3B80 /* VecFloat */ = {
+			isa = PBXGroup;
+			children = (
+				8DD0395D1A85A473000B3B80 /* V2f.swift */,
+				8DD0395E1A85A473000B3B80 /* V3f.swift */,
+				8DD0395F1A85A473000B3B80 /* V4f.swift */,
+			);
+			path = VecFloat;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD038971A85A2C2000B3B80 /* Metal_UniformStreaming */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DD038B71A85A2C2000B3B80 /* Build configuration list for PBXNativeTarget "Metal_UniformStreaming" */;
+			buildPhases = (
+				8DD038941A85A2C2000B3B80 /* Sources */,
+				8DD038951A85A2C2000B3B80 /* Frameworks */,
+				8DD038961A85A2C2000B3B80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Metal_UniformStreaming;
+			productName = Metal_UniformStreaming;
+			productReference = 8DD038981A85A2C2000B3B80 /* Metal_UniformStreaming.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8DD038AC1A85A2C2000B3B80 /* Metal_UniformStreamingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DD038BA1A85A2C2000B3B80 /* Build configuration list for PBXNativeTarget "Metal_UniformStreamingTests" */;
+			buildPhases = (
+				8DD038A91A85A2C2000B3B80 /* Sources */,
+				8DD038AA1A85A2C2000B3B80 /* Frameworks */,
+				8DD038AB1A85A2C2000B3B80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DD038AF1A85A2C2000B3B80 /* PBXTargetDependency */,
+			);
+			name = Metal_UniformStreamingTests;
+			productName = Metal_UniformStreamingTests;
+			productReference = 8DD038AD1A85A2C2000B3B80 /* Metal_UniformStreamingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DD038901A85A2C2000B3B80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Nordic Software, Inc.";
+				TargetAttributes = {
+					8DD038971A85A2C2000B3B80 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					8DD038AC1A85A2C2000B3B80 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 8DD038971A85A2C2000B3B80;
+					};
+				};
+			};
+			buildConfigurationList = 8DD038931A85A2C2000B3B80 /* Build configuration list for PBXProject "Metal_UniformStreaming" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8DD0388F1A85A2C2000B3B80;
+			productRefGroup = 8DD038991A85A2C2000B3B80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD038971A85A2C2000B3B80 /* Metal_UniformStreaming */,
+				8DD038AC1A85A2C2000B3B80 /* Metal_UniformStreamingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DD038961A85A2C2000B3B80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD038A31A85A2C2000B3B80 /* Main.storyboard in Resources */,
+				8DD038A81A85A2C2000B3B80 /* LaunchScreen.xib in Resources */,
+				8DD038A51A85A2C2000B3B80 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD038AB1A85A2C2000B3B80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD038941A85A2C2000B3B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD038CF1A85A32C000B3B80 /* TView.swift in Sources */,
+				8DD038CB1A85A32C000B3B80 /* TPlasmaUniforms.swift in Sources */,
+				8DD039661A85A473000B3B80 /* V4f.swift in Sources */,
+				8DD039601A85A473000B3B80 /* MathBase.swift in Sources */,
+				8DD038D11A85A32C000B3B80 /* plasma.metal in Sources */,
+				8DD039611A85A473000B3B80 /* M2f.swift in Sources */,
+				8DD038CC1A85A32C000B3B80 /* TRenderer.swift in Sources */,
+				8DD038CA1A85A32C000B3B80 /* TPlasmaTypes.swift in Sources */,
+				8DD038D01A85A32C000B3B80 /* TViewController.swift in Sources */,
+				8DD039651A85A473000B3B80 /* V3f.swift in Sources */,
+				8DD038CD1A85A32C000B3B80 /* TTransforms.swift in Sources */,
+				8DD038D21A85A32C000B3B80 /* shaders.metal in Sources */,
+				8DD039631A85A473000B3B80 /* M4f.swift in Sources */,
+				8DD039621A85A473000B3B80 /* M3f.swift in Sources */,
+				8DD038C91A85A32C000B3B80 /* TPlasmaParams.swift in Sources */,
+				8DD0389E1A85A2C2000B3B80 /* AppDelegate.swift in Sources */,
+				8DD038C81A85A32C000B3B80 /* TCube.swift in Sources */,
+				8DD039641A85A473000B3B80 /* V2f.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD038A91A85A2C2000B3B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD038B41A85A2C2000B3B80 /* Metal_UniformStreamingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DD038AF1A85A2C2000B3B80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DD038971A85A2C2000B3B80 /* Metal_UniformStreaming */;
+			targetProxy = 8DD038AE1A85A2C2000B3B80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8DD038A11A85A2C2000B3B80 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DD038A21A85A2C2000B3B80 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8DD038A61A85A2C2000B3B80 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DD038A71A85A2C2000B3B80 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8DD038B51A85A2C2000B3B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DD038B61A85A2C2000B3B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8DD038B81A85A2C2000B3B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Metal_UniformStreaming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8DD038B91A85A2C2000B3B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Metal_UniformStreaming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8DD038BB1A85A2C2000B3B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Metal_UniformStreamingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metal_UniformStreaming.app/Metal_UniformStreaming";
+			};
+			name = Debug;
+		};
+		8DD038BC1A85A2C2000B3B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Metal_UniformStreamingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metal_UniformStreaming.app/Metal_UniformStreaming";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8DD038931A85A2C2000B3B80 /* Build configuration list for PBXProject "Metal_UniformStreaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DD038B51A85A2C2000B3B80 /* Debug */,
+				8DD038B61A85A2C2000B3B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DD038B71A85A2C2000B3B80 /* Build configuration list for PBXNativeTarget "Metal_UniformStreaming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DD038B81A85A2C2000B3B80 /* Debug */,
+				8DD038B91A85A2C2000B3B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DD038BA1A85A2C2000B3B80 /* Build configuration list for PBXNativeTarget "Metal_UniformStreamingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DD038BB1A85A2C2000B3B80 /* Debug */,
+				8DD038BC1A85A2C2000B3B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8DD038901A85A2C2000B3B80 /* Project object */;
+}

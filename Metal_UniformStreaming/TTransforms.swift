@@ -216,7 +216,8 @@ func ortho2d(origin:V3f, size:V3f) -> M4f
 //------------------------------------------------------------------------------
 // mark Public - Transformations - Off-Center Orthographic
 //------------------------------------------------------------------------------
-func ortho2d_oc(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float) -> M4f
+func ortho2d_oc(left:Float, right:Float,
+                    bottom:Float, top:Float, near:Float, far:Float) -> M4f
 {
     var sLength:Float = 1.0 / (right - left)
     var sHeight:Float = 1.0 / (top - bottom)
