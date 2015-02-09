@@ -200,7 +200,7 @@ class TPlasmaUniforms
         renderEncoder.setVertexBuffer(mpUniformBuffer[renderFrameCycle],
             offset:offset.x, atIndex:3 )
         
-        renderEncoder.setFragmentBuffer(mpUniformBuffer[mnMemBarrierIndex],
+        renderEncoder.setFragmentBuffer(mpUniformBuffer[renderFrameCycle],
             offset:Int(kSzVertUniformBuffer) + offset.y, atIndex:0 )
     }
     //-------------------------------------------------------------------------
