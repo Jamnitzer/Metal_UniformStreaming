@@ -46,7 +46,7 @@ class TPlasmaUniforms
     var mpUniformBuffer = [MTLBuffer]()
    
     var mnCapacity: Int = 0
-    var mnMemBarrierIndex: Int = 0
+    var renderFrameCycle: Int = 0
     var mnEncodeIndex: Int = 0
 
     private var _bounds = zeroRect
@@ -134,7 +134,7 @@ class TPlasmaUniforms
         m_Transforms.m_Model     = translate(0.0, 0.0, 7.0)
         m_Transforms.m_ModelView = translate(0.0, 0.0, 1.5)
         
-        mnMemBarrierIndex = 0
+        renderFrameCycle = 0
         mnEncodeIndex     = 0
 
         println("## m_Transforms.mnAspect = \(m_Transforms.mnAspect)")
@@ -152,7 +152,7 @@ class TPlasmaUniforms
         //--------------------------------------------
         // Get the constant bufferm at index
         //--------------------------------------------
-        var buffer:MTLBuffer? = mpUniformBuffer[mnMemBarrierIndex]
+        var buffer:MTLBuffer? = mpUniformBuffer[renderFrameCycle]
         if (buffer == nil)
         {
             println(">> ERROR: Failed to get the constant buffer")
@@ -197,7 +197,7 @@ class TPlasmaUniforms
     //-------------------------------------------------------------------------
     func encode(renderEncoder:MTLRenderCommandEncoder, offset:(x:Int, y:Int))
     {
-        renderEncoder.setVertexBuffer(mpUniformBuffer[mnMemBarrierIndex],
+        renderEncoder.setVertexBuffer(mpUniformBuffer[renderFrameCycle],
             offset:offset.x, atIndex:3 )
         
         renderEncoder.setFragmentBuffer(mpUniformBuffer[mnMemBarrierIndex],
@@ -220,7 +220,7 @@ class TPlasmaUniforms
             encode(renderEncoder, offset:offset)
 
             // Increment the memory barrier index
-            mnMemBarrierIndex = (mnMemBarrierIndex + 1) % mnCapacity
+            renderFrameCycle = (renderFrameCycle + 1) % mnCapacity
         }
         mnEncodeIndex = (mnEncodeIndex + 1) % kMaxEncodes
     }
