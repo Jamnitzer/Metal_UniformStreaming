@@ -10,6 +10,7 @@ and uses renderFrameCycle to cycle [0, 1, 2] through them.
 
 In the class TPlasmaUniforms an array of buffers is declared..
 
+    //-------------------------------------------------------------------------
     var mpUniformBuffer = [MTLBuffer]()
     
     init(device:MTLDevice, capacity:Int)
@@ -23,10 +24,12 @@ In the class TPlasmaUniforms an array of buffers is declared..
             }
         }
     }
+    //-------------------------------------------------------------------------
         
 In the update we use renderFrameCycle to get the correct uniform buffer for this pass.
 And then copy our data into it.
 
+    //-------------------------------------------------------------------------
     func upload() -> Bool
     {
         //--------------------------------------------
@@ -40,10 +43,12 @@ And then copy our data into it.
         var pBufferPointer = buffer!.contents()
         
         memcpy(pBufferPointer, uniformData, kSzVertUniformBuffer)
-  }
+    }
+    //-------------------------------------------------------------------------
 
 And at render time we use the same renderFrameCycle to set the current uniformBuffer
 
+    //-------------------------------------------------------------------------
     func encode(renderEncoder:MTLRenderCommandEncoder, offset:(x:Int, y:Int))
     {
         renderEncoder.setVertexBuffer(mpUniformBuffer[renderFrameCycle],
@@ -52,16 +57,17 @@ And at render time we use the same renderFrameCycle to set the current uniformBu
         renderEncoder.setFragmentBuffer(mpUniformBuffer[renderFrameCycle],
             offset:Int(kSzVertUniformBuffer) + offset.y, atIndex:0 )
     }
+    //-------------------------------------------------------------------------
 
 This is little more involved because in each of these 3 buffers 
 there are four sets of uniform data.
 
-The first is cubeA vertexUniforms and then the cubeA fragmentUniforms
+The first is cubeA vertexUniforms and then the cubeA fragmentUniforms. 
 The third is cubeB vertexUniforms and finally the cubeB fragmentUniforms
 
-This is handled with mnEncodeIndex which just toggles [0, 1]
-When mnEncodeIndex == 0 we encode the cubeA uniforms
-When mnEncodeIndex == 1 we encode the cubeB uniforms
+This is handled with mnEncodeIndex which just toggles [0, 1].
+When mnEncodeIndex == 0 we encode the cubeA uniforms.
+When mnEncodeIndex == 1 we encode the cubeB uniforms.
 
 The shader is notified by the offsets where to look for the data.
 
