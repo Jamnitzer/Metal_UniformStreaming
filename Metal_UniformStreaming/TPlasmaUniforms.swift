@@ -75,7 +75,8 @@ class TPlasmaUniforms
             //--------------------------------------------
             // Create a new constant buffer
             //--------------------------------------------
-            if let buffer = device.newBufferWithLength(kMaxBufferBytesPerFrame, options: nil)
+            if let buffer = device.newBufferWithLength(
+                    kMaxBufferBytesPerFrame, options: nil)
             {
                 //--------------------------------------------
                 // Set a label for the constant buffer
@@ -178,7 +179,7 @@ class TPlasmaUniforms
         // Copy the updated linear transformations for 
         // both cubes into the constant vertex buffer
         //--------------------------------------------
-        memcpy(pBufferPointer, ff, kSzVertUniformBuffer)
+        memcpy(pBufferPointer, ff, Int(kSzVertUniformBuffer))
 
         //--------------------------------------------
         // Increment the buffer pointer to where we 
@@ -190,7 +191,7 @@ class TPlasmaUniforms
         // Copy scale and time factors for both cubes 
         // into the constant fragment buffer
         //--------------------------------------------
-        memcpy(pBufferPointer, m_FragUniforms, kSzFragUniformBuffer)
+        memcpy(pBufferPointer, m_FragUniforms, Int(kSzFragUniformBuffer))
         
         return true
     }

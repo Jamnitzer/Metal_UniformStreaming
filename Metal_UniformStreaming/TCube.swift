@@ -408,7 +408,7 @@ class TCube
                     UnsafeMutablePointer<V3f>(vertex_buffer.contents())
 
                     let kSzVertices = kVertices.count * sizeof(V3f)
-                    memcpy(bufferPointer, kVertices, UInt(kSzVertices))
+                    memcpy(bufferPointer, kVertices, Int(kSzVertices))
                     
                     println("kSzVertices:  \(kSzVertices)")
                     println("_mSize:  \(_mSize)")

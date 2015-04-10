@@ -121,7 +121,7 @@ class TView : UIView
             let t1 = drawable!.texture!
             setupRenderPassDescriptorForTexture(t1)
         }
-        return _renderPassDescriptor?
+        return _renderPassDescriptor
     }
     //-------------------------------------------------------------------------
     func currentDrawable() -> CAMetalDrawable?
@@ -130,7 +130,7 @@ class TView : UIView
         {
             _currentDrawable = metalLayer?.nextDrawable()
         }
-        return _currentDrawable?
+        return _currentDrawable
     }
     //-------------------------------------------------------------------------
     // view controller will call off the main thread
@@ -169,7 +169,7 @@ class TView : UIView
         _currentDrawable = nil
     }
     //-------------------------------------------------------------------------
-    func setContentScaleFactor(contentScaleFactor:CGFloat)
+    func set_ContentScaleFactor(contentScaleFactor:CGFloat)
     {
         super.contentScaleFactor = contentScaleFactor
         layerSizeDidUpdate = true

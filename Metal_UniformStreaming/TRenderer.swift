@@ -19,7 +19,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
     var m_CommandQueue:MTLCommandQueue?
     var m_ShaderLibrary:MTLLibrary?
 
-    let m_InflightSemaphore = dispatch_semaphore_create(kInFlightCommandBuffers)
+    var m_InflightSemaphore = dispatch_semaphore_create(kInFlightCommandBuffers)
     
     var m_PipelineState:MTLRenderPipelineState?
     var m_DepthState:MTLDepthStencilState?
@@ -211,7 +211,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         renderEncoder.popDebugGroup()
     }
     //-------------------------------------------------------------------------
-    func render(view:TView)
+    @objc func render(view:TView)
     {
         // Wait on semaphore
        dispatch_semaphore_wait(m_InflightSemaphore, DISPATCH_TIME_FOREVER)
@@ -266,19 +266,19 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         }
     }
     //-------------------------------------------------------------------------
-    func reshape(view:TView)
+    @objc func reshape(view:TView)
     {
         mpPlasmaUniforms!.bounds = view.bounds;
     }
     //-------------------------------------------------------------------------
     // mark VIEW CONTROLLER DELEGATE METHODS
     //-------------------------------------------------------------------------
-    func update(controller:TViewController)
+    @objc func update(controller:TViewController)
     {
         mpPlasmaUniforms!.update()
     }
     //-------------------------------------------------------------------------
-    func viewController(controller:TViewController, willPause:Bool)
+    @objc func viewController(controller:TViewController, willPause:Bool)
     {
         // timer is suspended/resumed
         // Can do any non-rendering related background work here when suspended
