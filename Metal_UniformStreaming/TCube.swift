@@ -56,25 +56,25 @@ class TCube
         mVertexBuffer = newVertexBuffer(cubeSize, device: device)
         if (mVertexBuffer == nil)
         {
-            println(">> ERROR: Failed creating a vertex buffer!")
+            print(">> ERROR: Failed creating a vertex buffer!")
             return
         }
         mNormalBuffer = newNormalBuffer(device)
         if (mNormalBuffer == nil)
         {
-            println(">> ERROR: Failed creating a normals buffer!")
+            print(">> ERROR: Failed creating a normals buffer!")
             return
         }
         mTexCoordBuffer = newTexCoordBuffer(device)
         if (mTexCoordBuffer == nil)
         {
-            println(">> ERROR: Failed creating a texture coordinate buffer!")
+            print(">> ERROR: Failed creating a texture coordinate buffer!")
             return
         }
         mIndexBuffer = newIndexBuffer(device)
         if (mIndexBuffer == nil)
         {
-            println(">> ERROR: Failed creating an index buffer!")
+            print(">> ERROR: Failed creating an index buffer!")
             return
         }
     } // initWithDevice
@@ -84,7 +84,7 @@ class TCube
         _mSize = cubeSize
         _mLength = cubeSize.x
         
-        var kVertices:[V3f] = [
+        let kVertices:[V3f] = [
             V3f(-_mSize.x, -_mSize.y, -_mSize.z),   //0
             V3f(-_mSize.x, -_mSize.y, -_mSize.z),   //0
             V3f(-_mSize.x, -_mSize.y, -_mSize.z),   //0
@@ -119,22 +119,22 @@ class TCube
             V3f(-_mSize.x, _mSize.y,  _mSize.z)
         ]
         //----------------------------------------------------------
-        let v_pointer3f = UnsafePointer<V3f>(kVertices)
-        for (var i:Int = 0; i < kVertices.count; ++i)
-        {
-            let ff = v_pointer3f[i]
-            println("v3 = \(ff) ")
-            
-        }
+        //let v_pointer3f = UnsafePointer<V3f>(kVertices)
+        //for (var i:Int = 0; i < kVertices.count; ++i)
+        //{
+        //    let ff = v_pointer3f[i]
+        //    print("v3 = \(ff) ")
+        //    
+        //}
         //----------------------------------------------------------
         // Set the default vertex buffer index (binding point)
         mVertexIndex = 0
 
-        println("kVertices.count = \(kVertices.count)")
-        println("kVertices.count * sizeof(V3f) = \(kVertices.count * sizeof(V3f))")
-        println("kSzVertices = \(kSzVertices)")
+        //print("kVertices.count = \(kVertices.count)")
+        //print("kVertices.count * sizeof(V3f) = \(kVertices.count * sizeof(V3f))")
+        //print("kSzVertices = \(kSzVertices)")
        
-        var vertexBuffer = device.newBufferWithBytes(
+        let vertexBuffer = device.newBufferWithBytes(
             UnsafePointer<Void>(kVertices),
             length: Int(kSzVertices),
             options: MTLResourceOptions.OptionCPUCacheModeDefault)
@@ -181,22 +181,22 @@ class TCube
             V3f( 0.0, 0.0,  1.0 )
         ]
         //----------------------------------------------------------
-        let v_pointer3f = UnsafePointer<V3f>(kNormals)
-        for (var i:Int = 0; i < kNormals.count; ++i)
-        {
-            let ff = v_pointer3f[i]
-            println("n3 = \(ff) ")
-            
-        }
-        //----------------------------------------------------------
-        println("kNormals.count = \(kNormals.count)")
-        println("kNormals.count * sizeof(V3f) = \(kNormals.count * sizeof(V3f))")
-        println("kSzNormals = \(kSzNormals)")
+//        let v_pointer3f = UnsafePointer<V3f>(kNormals)
+//        for (var i:Int = 0; i < kNormals.count; ++i)
+//        {
+//            let ff = v_pointer3f[i]
+//            print("n3 = \(ff) ")
+//            
+//        }
+//        //----------------------------------------------------------
+//        print("kNormals.count = \(kNormals.count)")
+//        print("kNormals.count * sizeof(V3f) = \(kNormals.count * sizeof(V3f))")
+//        print("kSzNormals = \(kSzNormals)")
 
         // Set the default normal buffer index (binding point)
         mNormalIndex = 1
         
-        var normalBuffer = device.newBufferWithBytes(
+        let normalBuffer = device.newBufferWithBytes(
             UnsafePointer<Void>(kNormals),
             length: Int(kSzNormals),
             options: MTLResourceOptions.OptionCPUCacheModeDefault)
@@ -242,22 +242,22 @@ class TCube
             V2f(0.0, 1.0)
         ]
         //----------------------------------------------------------
-        let v_pointer2f = UnsafePointer<V2f>(kTexCoords)
-        for (var i:Int = 0; i < kTexCoords.count; ++i)
-        {
-            let ff = v_pointer2f[i]
-            println("t2 = \(ff) ")
-            
-        }
+//        let v_pointer2f = UnsafePointer<V2f>(kTexCoords)
+//        for (var i:Int = 0; i < kTexCoords.count; ++i)
+//        {
+//            let ff = v_pointer2f[i]
+//            print("t2 = \(ff) ")
+//            
+//        }
         //----------------------------------------------------------
         // Set the default texture coordinate buffer index (binding point)
         mTexCoordIndex = 2
   
-        println("kTexCoords = \(kTexCoords.count)")
-        println("kTexCoords.count * sizeof(V2f) = \(kTexCoords.count * sizeof(V2f))")
-        println("kSzTexCoords = \(kSzTexCoords)")
+//        print("kTexCoords = \(kTexCoords.count)")
+//        print("kTexCoords.count * sizeof(V2f) = \(kTexCoords.count * sizeof(V2f))")
+//        print("kSzTexCoords = \(kSzTexCoords)")
         
-        var texCoordBuffer = device.newBufferWithBytes(
+        let texCoordBuffer = device.newBufferWithBytes(
             UnsafePointer<Void>(kTexCoords),
             length: Int(kSzTexCoords),
             options: MTLResourceOptions.OptionCPUCacheModeDefault)
@@ -283,28 +283,28 @@ class TCube
             20,  6, 22  ]
         
         //----------------------------------------------------------
-        let v_pointer = UnsafePointer<UInt32>(kIndices)
-        for (var i:Int = 0; i < kIndices.count; i += 3)
-        {
-            var ff = v_pointer[i + 0]
-            print("idx = \(ff) ")
-             ff = v_pointer[i + 1]
-            print(", \(ff) ")
-             ff = v_pointer[i + 2]
-            println(", = \(ff) ")
-        }
+//        let v_pointer = UnsafePointer<UInt32>(kIndices)
+//        for (var i:Int = 0; i < kIndices.count; i += 3)
+//        {
+//            var ff = v_pointer[i + 0]
+//            print("idx = \(ff) ", terminator: "")
+//             ff = v_pointer[i + 1]
+//            print(", \(ff) ", terminator: "")
+//             ff = v_pointer[i + 2]
+//            print(", = \(ff) ")
+//        }
         //----------------------------------------------------------
         let kSzIndices = kIndices.count * sizeof(UInt32)
         
         self.mIndexCount = kIndices.count
         
-        let kCntIndicies:UInt32 = 36;
-        println("kCntIndicies = \(kCntIndicies)")
-        println("kIndices.count = \(kIndices.count)")
-        println("kIndices.count * sizeof(UInt32) = \(kIndices.count * sizeof(UInt32))")
-        println("kSzIndices = \(kSzIndices)")
+       //  let kCntIndicies:UInt32 = 36;
+       //  print("kCntIndicies = \(kCntIndicies)")
+       //  print("kIndices.count = \(kIndices.count)")
+       //  print("kIndices.count * sizeof(UInt32) = \(kIndices.count * sizeof(UInt32))")
+       //  print("kSzIndices = \(kSzIndices)")
         
-        var indexBuffer = device.newBufferWithBytes(
+        let indexBuffer = device.newBufferWithBytes(
             UnsafePointer<Void>(kIndices),
             length: kSzIndices,
             options: MTLResourceOptions.OptionCPUCacheModeDefault)
@@ -404,18 +404,18 @@ class TCube
                 // Get the base address of the constant buffer
                 if let vertex_buffer = mVertexBuffer
                 {
-                   var bufferPointer =
+                   let bufferPointer =
                     UnsafeMutablePointer<V3f>(vertex_buffer.contents())
 
                     let kSzVertices = kVertices.count * sizeof(V3f)
                     memcpy(bufferPointer, kVertices, Int(kSzVertices))
                     
-                    println("kSzVertices:  \(kSzVertices)")
-                    println("_mSize:  \(_mSize)")
+                    print("kSzVertices:  \(kSzVertices)")
+                    print("_mSize:  \(_mSize)")
                 }
                 else
                 {
-                    println("FAIL:  let vertex_buffer = mVertexBuffer")
+                    print("FAIL:  let vertex_buffer = mVertexBuffer")
                     //assert(false, "FAIL")
                 }
             }

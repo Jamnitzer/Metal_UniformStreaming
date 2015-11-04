@@ -58,12 +58,12 @@ class TPlasmaUniforms
         // Set the total number of inflight buffers
         //--------------------------------------------
         mnCapacity = capacity
-        println("capacity = \(capacity )")
-        println("kCntVertUniformBuffer = \(kCntVertUniformBuffer )")
-        println("kSzVertUniforms = \(kSzVertUniforms )")
-        println("kSzVertUniformBuffer = \(kSzVertUniformBuffer )")
-        println("kSzFragUniformBuffer = \(kSzFragUniformBuffer )")
-        println("kMaxBufferBytesPerFrame = \(kMaxBufferBytesPerFrame )")
+        // print("capacity = \(capacity )")
+        // print("kCntVertUniformBuffer = \(kCntVertUniformBuffer )")
+        // print("kSzVertUniforms = \(kSzVertUniforms )")
+        // print("kSzVertUniformBuffer = \(kSzVertUniformBuffer )")
+        // print("kSzFragUniformBuffer = \(kSzFragUniformBuffer )")
+        // print("kMaxBufferBytesPerFrame = \(kMaxBufferBytesPerFrame )")
       
         //--------------------------------------------
         // allocate one region of memory for the constant buffer per max in
@@ -75,34 +75,27 @@ class TPlasmaUniforms
             //--------------------------------------------
             // Create a new constant buffer
             //--------------------------------------------
-            if let buffer = device.newBufferWithLength(
-                    kMaxBufferBytesPerFrame, options: nil)
-            {
-                //--------------------------------------------
-                // Set a label for the constant buffer
-                //--------------------------------------------
-                buffer.label = "PlasmaConstantBuffer\(i)"
-                
-                //--------------------------------------------
-                // Add the constant buffer to the mutable array
-                //--------------------------------------------
-                mpUniformBuffer.append(buffer)
-            }
-            else
-            {
-                println(">> ERROR: Failed creating a new buffer!")
-                break
-            }
+            let buffer = device.newBufferWithLength(
+                kMaxBufferBytesPerFrame, options: .CPUCacheModeDefaultCache)
+            //--------------------------------------------
+            // Set a label for the constant buffer
+            //--------------------------------------------
+            buffer.label = "PlasmaConstantBuffer\(i)"
+            
+            //--------------------------------------------
+            // Add the constant buffer to the mutable array
+            //--------------------------------------------
+            mpUniformBuffer.append(buffer)
         }
         
         if mpUniformBuffer.count != mnCapacity
         {
-            println(">> ERROR: Failed creating all the requested buffers!")
+            print(">> ERROR: Failed creating all the requested buffers!")
             return
         }
         
         //---------------------------------------------------------------------
-        for (var I:Int = 0; i < 2; ++i)
+        for (var _:Int = 0; i < 2; ++i)
         {
             let mv = M4f()
             let proj = M4f()
@@ -115,8 +108,8 @@ class TPlasmaUniforms
             let f = Fragment(mnTime:time, mnScale:scale, mnType:type)
             m_FragUniforms.append(f)
         
-            var rtime = ParamBlock(0.0, 0.08, 0.0, 12.0 * Float(M_PI), 1.0)
-            var rscale = ParamBlock(1.0, 0.125, 1.0, 32.0, 1.0)
+            let rtime = ParamBlock(0.0, 0.08, 0.0, 12.0 * Float(M_PI), 1.0)
+            let rscale = ParamBlock(1.0, 0.125, 1.0, 32.0, 1.0)
             let ps = TPlasmaParams(rTime:rtime, rScale:rscale)
             m_Plasma_Params.append(ps)
         
@@ -131,16 +124,16 @@ class TPlasmaUniforms
         m_Transforms.mnRotation = Float(0.0)
         m_Transforms.mnFOVY     = kFOVY
         m_Transforms.m_Projection = M4f()
-        m_Transforms.m_View      = lookAt(kEye, kCenter, kUp)
-        m_Transforms.m_Model     = translate(0.0, 0.0, 7.0)
-        m_Transforms.m_ModelView = translate(0.0, 0.0, 1.5)
+        m_Transforms.m_View      = lookAt(kEye, center: kCenter, up: kUp)
+        m_Transforms.m_Model     = translate(0.0, y: 0.0, z: 7.0)
+        m_Transforms.m_ModelView = translate(0.0, y: 0.0, z: 1.5)
         
         renderFrameCycle = 0
         mnEncodeIndex     = 0
 
-        println("## m_Transforms.mnAspect = \(m_Transforms.mnAspect)")
-        println("## m_Transforms.m_Projection = \(m_Transforms.m_Projection) ")
-        println()
+        // print("## m_Transforms.mnAspect = \(m_Transforms.mnAspect)")
+        // print("## m_Transforms.m_Projection = \(m_Transforms.m_Projection) ")
+        // print("")
    }
     //-------------------------------------------------------------------------
     deinit
@@ -153,10 +146,10 @@ class TPlasmaUniforms
         //--------------------------------------------
         // Get the constant bufferm at index
         //--------------------------------------------
-        var buffer:MTLBuffer? = mpUniformBuffer[renderFrameCycle]
+        let buffer:MTLBuffer? = mpUniformBuffer[renderFrameCycle]
         if (buffer == nil)
         {
-            println(">> ERROR: Failed to get the constant buffer")
+            print(">> ERROR: Failed to get the constant buffer")
             return false
         }
         //--------------------------------------------
@@ -165,7 +158,7 @@ class TPlasmaUniforms
         var pBufferPointer = buffer!.contents()
         if (pBufferPointer == nil)  // uint8_t buffer.contents()
         {
-            println(">> ERROR: Failed to get the constant buffer pointer!")
+            print(">> ERROR: Failed to get the constant buffer pointer!")
             return false
         }
         //--------------------------------------------
@@ -256,27 +249,27 @@ class TPlasmaUniforms
                 // Get the bounds for the current rendering layer
                 m_Transforms.mnAspect     = Float(abs(r))
                 m_Transforms.m_Projection = perspective_fov(
-                    m_Transforms.mnFOVY, m_Transforms.mnAspect, 0.1, 100.0)
+                    m_Transforms.mnFOVY, aspect: m_Transforms.mnAspect, near: 0.1, far: 100.0)
                 
                 m_VertUniforms[0].m_Projection = m_Transforms.m_Projection
                 m_VertUniforms[1].m_Projection = m_Transforms.m_Projection
                 
                 m_Orientation[1] = m_Orientation[0]
                 
-                println("## m_Transforms.mnAspect = \(m_Transforms.mnAspect)")
-                println("## m_Transforms.m_Projection = \(m_Transforms.m_Projection) ")
-                println()
+                // print("## m_Transforms.mnAspect = \(m_Transforms.mnAspect)")
+                // print("## m_Transforms.m_Projection = \(m_Transforms.m_Projection) ")
+                // print("")
             }
         }
     }
     //-------------------------------------------------------------------------
     func update()
     {
-        var rotateA:M4f = rotate(m_Transforms.mnRotation, 0.0, 1.0, 0.0)
-        var model:M4f = m_Transforms.m_Model * rotateA
-        var modelViewBase:M4f = m_Transforms.m_View * model
+        var rotateA:M4f = rotate(m_Transforms.mnRotation, x: 0.0, y: 1.0, z: 0.0)
+        let model:M4f = m_Transforms.m_Model * rotateA
+        let modelViewBase:M4f = m_Transforms.m_View * model
  
-        rotateA = rotate(m_Transforms.mnRotation, 1.0, 1.0, 1.0)
+        rotateA = rotate(m_Transforms.mnRotation, x: 1.0, y: 1.0, z: 1.0)
 
         var modelView:M4f = m_Transforms.m_ModelView * rotateA
         modelView = modelViewBase * modelView
@@ -303,12 +296,12 @@ class TPlasmaUniforms
         //------------------------------------------------------------------
         // Update the plasma animation
         //------------------------------------------------------------------
-        var v:V2f = m_Plasma_Params[0].update()
+        let v:V2f = m_Plasma_Params[0].update()
         
         m_FragUniforms[0].mnTime  = v.x
         m_FragUniforms[0].mnScale = v.y
         
-        var w:V2f = m_Plasma_Params[1].update()
+        let w:V2f = m_Plasma_Params[1].update()
         
         m_FragUniforms[1].mnTime  = w.x
         m_FragUniforms[1].mnScale = w.y

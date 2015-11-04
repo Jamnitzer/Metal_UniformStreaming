@@ -62,36 +62,36 @@ func IsZero(v:Float, epsilon:Float) -> Bool
 //------------------------------------------------------------------------------
 func IsZero(v:Float) -> Bool
 {
-    return IsZero(v, FLT_EPSILON)
+    return IsZero(v, epsilon: FLT_EPSILON)
 }
 //------------------------------------------------------------------------------
 func IsNotZero(v:Float) -> Bool
 {
-    return !IsZero(v, FLT_EPSILON)
+    return !IsZero(v, epsilon: FLT_EPSILON)
 }
 //------------------------------------------------------------------------------
 func IsNotZero(v:Float, epsilon:Float) -> Bool
 {
-    return !IsZero(v, epsilon)
+    return !IsZero(v, epsilon: epsilon)
 }
 //------------------------------------------------------------------------------
 func IsEqual(a:Float, b:Float) -> Bool
 {
-    return IsZero(a - b, FLT_EPSILON)
+    return IsZero(a - b, epsilon: FLT_EPSILON)
 }
 //------------------------------------------------------------------------------
 func IsEqual(a:Float, b:Float, epsilon:Float) -> Bool
 {
-    return IsZero(a - b, epsilon)
+    return IsZero(a - b, epsilon: epsilon)
 }
 //------------------------------------------------------------------------------
 func IsNotEqual(a:Float, b:Float) -> Bool
 {
-    return !IsZero(a - b, FLT_EPSILON)
+    return !IsZero(a - b, epsilon: FLT_EPSILON)
 }
 //------------------------------------------------------------------------------
 func IsNotEqual(a:Float, b:Float, epsilon:Float) -> Bool
 {
-    return !IsZero(a - b, epsilon)
+    return !IsZero(a - b, epsilon: epsilon)
 }
 //------------------------------------------------------------------------------

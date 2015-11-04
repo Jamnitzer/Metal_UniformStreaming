@@ -67,7 +67,7 @@ class TView : UIView
     //-------------------------------------------------------------------------
     required init(coder aDecoder: NSCoder)
     {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.initCommon()
     }
     //-------------------------------------------------------------------------
@@ -81,7 +81,7 @@ class TView : UIView
         metalLayer = self.layer as? CAMetalLayer
         if (metalLayer == nil)
         {
-            println("NO metalLayer HERE")
+            print("NO metalLayer HERE")
         }
         metalLayer?.device = device           // 2
         metalLayer?.pixelFormat = .BGRA8Unorm // 3
@@ -110,15 +110,15 @@ class TView : UIView
     //-------------------------------------------------------------------------
     func renderPassDescriptor() -> MTLRenderPassDescriptor?
     {
-        var drawable:CAMetalDrawable? = self.currentDrawable()
+        let drawable:CAMetalDrawable? = self.currentDrawable()
         if (drawable == nil)
         {
-            println(">> ERROR: Failed to get a drawable!")
+            print(">> ERROR: Failed to get a drawable!")
             _renderPassDescriptor = nil
         }
         else
         {
-            let t1 = drawable!.texture!
+            let t1 = drawable!.texture
             setupRenderPassDescriptorForTexture(t1)
         }
         return _renderPassDescriptor

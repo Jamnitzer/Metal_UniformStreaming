@@ -61,7 +61,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         m_ShaderLibrary = device!.newDefaultLibrary()
         if (m_ShaderLibrary == nil)
         {
-            println(">> ERROR: Couldnt create a default shader library")
+            print(">> ERROR: Couldnt create a default shader library")
             //------------------------------------------------------------
             // assert here becuase if the shader libary isnt loading,
             // its good place to debug why shaders arent compiling
@@ -89,11 +89,11 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
 
         if (!preparePipelineState())
         {
-            println(">> ERROR: Failed creating a depth stencil state descriptor!")
+            print(">> ERROR: Failed creating a depth stencil state descriptor!")
         }
         if (!setupContent())
         {
-            println(">> ERROR: Failed loading the assets!")
+            print(">> ERROR: Failed loading the assets!")
         }
     }
     //-------------------------------------------------------------------------
@@ -107,11 +107,11 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
 
         if (vertexProgram == nil)
         {
-            println(">> ERROR: Couldnt load vertex function from default library")
+            print(">> ERROR: Couldnt load vertex function from default library")
         }
         if (fragmentProgram == nil)
         {
-            println(">> ERROR: Couldnt load fragment function from default library")
+            print(">> ERROR: Couldnt load fragment function from default library")
         }
         
         //------------------------------------------------------------
@@ -125,16 +125,25 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         pipelineStateDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm
         
         pipelineStateDescriptor.sampleCount      = sampleCount
-        pipelineStateDescriptor.vertexFunction   = vertexProgram
+        pipelineStateDescriptor.vertexFunction   = vertexProgram!
         pipelineStateDescriptor.fragmentFunction = fragmentProgram
 
-        var pipelineError : NSError?
-        m_PipelineState = device!.newRenderPipelineStateWithDescriptor(
-            pipelineStateDescriptor, error: &pipelineError)
-        
-        if (m_PipelineState == nil)
+//        var pipelineError : NSError?
+//        m_PipelineState = device!.newRenderPipelineStateWithDescriptor(
+//            pipelineStateDescriptor, error: &pipelineError)
+//        
+//        if (m_PipelineState == nil)
+//        {
+//            print(">> ERROR: Failed creating a new render pipeline state descriptor:")
+//        }
+        do {
+            m_PipelineState = try
+                device!.newRenderPipelineStateWithDescriptor(pipelineStateDescriptor)
+        }
+        catch let pipelineError as NSError
         {
-            println(">> ERROR: Failed creating a new render pipeline state descriptor:")
+            m_PipelineState = nil
+            print(">> ERROR: Failed creating a new render pipeline state descriptor: \(pipelineError)")
         }
         return true
 
@@ -148,7 +157,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         mpCube = TCube(device: device!, cubeSize: size)
         if (mpCube == nil)
         {
-            println(">> ERROR: Failed creating 3d cube!")
+            print(">> ERROR: Failed creating 3d cube!")
             return false
         }
 
@@ -157,13 +166,13 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
         mpPlasmaUniforms = TPlasmaUniforms(device: device!, capacity:kInFlightCommandBuffers)
         if (mpPlasmaUniforms == nil)
         {
-            println(">> ERROR: Failed creating plasma constants!")
+            print(">> ERROR: Failed creating plasma constants!")
             return false
         }
         
         if (!prepareDepthState())
         {
-            println(">> ERROR: Failed creating a depth stencil!")
+            print(">> ERROR: Failed creating a depth stencil!")
             return false
         }
         return true
@@ -171,7 +180,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
     //-------------------------------------------------------------------------
     func prepareDepthState() -> Bool
     {
-        var pDepthStateDesc = MTLDepthStencilDescriptor()
+        let pDepthStateDesc = MTLDepthStencilDescriptor()
         pDepthStateDesc.depthCompareFunction = MTLCompareFunction.Less
         pDepthStateDesc.depthWriteEnabled    = true
         
@@ -233,7 +242,7 @@ class TRenderer :  MetalViewProtocol, TViewControllerDelegate
             commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor!)
             if (renderEncoder == nil)
             {
-                println("NO renderEncoder")
+                print("NO renderEncoder")
             }
             // Encode into a renderer
             encode(renderEncoder!)

@@ -4,7 +4,7 @@
 import Foundation
 
 //------------------------------------------------------------------------------
-struct V3f : Printable, DebugPrintable
+struct V3f : CustomStringConvertible, CustomDebugStringConvertible
 {
     var x:Float = 0.0
     var y:Float = 0.0

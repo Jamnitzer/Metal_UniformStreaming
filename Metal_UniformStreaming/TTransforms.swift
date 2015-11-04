@@ -24,13 +24,13 @@ func radians(degrees:Float) -> Float
 //------------------------------------------------------------------------------
 func scale(x:Float, y:Float, z:Float) -> V4f
 {
-    var scale4:V4f = V4f(x, y, z, 1.0)
+    let scale4:V4f = V4f(x, y, z, 1.0)
     return scale4
 }
 //------------------------------------------------------------------------------
 func scale(s:V3f) -> V4f
 {
-    var scale4:V4f = V4f(s.x, s.y, s.z, 1.0)
+    let scale4:V4f = V4f(s.x, s.y, s.z, 1.0)
     return scale4
 }
 //------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ func scale(s:V3f) -> V4f
 //------------------------------------------------------------------------------
 func translate(t:V3f) -> M4f
 {
-    var translateM4 = M4f.TranslationMatrix(t)
+    let translateM4 = M4f.TranslationMatrix(t)
     return translateM4
 }
 //------------------------------------------------------------------------------
@@ -58,26 +58,26 @@ func sinCosPI(angle:Float) -> (Float, Float)
 {
     // Computes the sine and cosine of pi times angle (measured in radians)
     // faster and gives exact results for angle = 90, 180, 270, etc.
-    var ang:Float = angle * Float(M_PI)
-    var c:Float = cos(ang)
-    var s:Float = sin(ang)
+    let ang:Float = angle * Float(M_PI)
+    let c:Float = cos(ang)
+    let s:Float = sin(ang)
     return (c, s)
 }
 //------------------------------------------------------------------------------
 func rotate(ang_degrees:Float, r:V3f) -> M4f
 {
     // angle in degrees.....
-    var a:Float = RadiansOverPi(ang_degrees)
+    let a:Float = RadiansOverPi(ang_degrees)
     var c:Float = 0.0
     var s:Float = 0.0
     
     (c, s) = sinCosPI(a)
     
-    var k:Float = 1.0 - c
+    let k:Float = 1.0 - c
     
-    var u:V3f = r.Normalized()
-    var v:V3f = s * u
-    var w:V3f = k * u
+    let u:V3f = r.Normalized()
+    let v:V3f = s * u
+    let w:V3f = k * u
     
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -104,15 +104,15 @@ func rotate(ang_degrees:Float, r:V3f) -> M4f
 func rotate(angle:Float, x:Float, y:Float, z:Float) -> M4f
 {
     let r = V3f(x, y, z)
-    return rotate(angle, r)
+    return rotate(angle, r: r)
 }
 //------------------------------------------------------------------------------
 // mark Public - Transformations - Perspective
 //------------------------------------------------------------------------------
 func perspective(width:Float, height:Float, near:Float, far:Float) -> M4f
 {
-    var zNear:Float = 2.0 * near
-    var zFar:Float = far / (far - near)
+    let zNear:Float = 2.0 * near
+    let zFar:Float = far / (far - near)
 
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -153,22 +153,22 @@ func perspective_fov(fovy:Float, aspect:Float, near:Float, far:Float) -> M4f
 //------------------------------------------------------------------------------
 func perspective_fov(fovy:Float, width:Float, height:Float, near:Float, far:Float) -> M4f
 {
-    var aspect = width / height
-   return perspective_fov(fovy, aspect, near, far)
+    let aspect = width / height
+   return perspective_fov(fovy, aspect: aspect, near: near, far: far)
 }
 //------------------------------------------------------------------------------
 // mark Public - Transformations - LookAt
 //------------------------------------------------------------------------------
 func lookAt(eye:V3f, center:V3f, up:V3f) -> M4f
 {
-    var E:V3f = -eye
-    var Na:V3f = center + E
-    var N:V3f = Na.Normalized()
-    var Ua = Cross(up, N)
+    let E:V3f = -eye
+    let Na:V3f = center + E
+    let N:V3f = Na.Normalized()
+    let Ua = Cross(up, b: N)
 
-    var U:V3f = Ua.Normalized()
-    var Va = Cross(N, U)
-    var V:V3f = Va.Normalized()
+    let U:V3f = Ua.Normalized()
+    let Va = Cross(N, b: U)
+    let V:V3f = Va.Normalized()
 
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -179,9 +179,9 @@ func lookAt(eye:V3f, center:V3f, up:V3f) -> M4f
         P.y = V.x; Q.y = V.y; R.y = V.z
         P.z = N.x; Q.z = N.y; R.z = N.z
     
-        S.x = Dot(U, E)
-        S.y = Dot(V, E)
-        S.z = Dot(N, E)
+        S.x = Dot(U, b: E)
+        S.y = Dot(V, b: E)
+        S.z = Dot(N, b: E)
         S.w = 1.0
     
         return M4f(P, Q, R, S)
@@ -191,9 +191,9 @@ func lookAt(eye:V3f, center:V3f, up:V3f) -> M4f
 //------------------------------------------------------------------------------
 func ortho2d(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float) -> M4f
 {
-    var sLength:Float = 1.0 / (right - left)
-    var sHeight:Float = 1.0 / (top - bottom)
-    var sDepth:Float = 1.0 / (far - near)
+    let sLength:Float = 1.0 / (right - left)
+    let sHeight:Float = 1.0 / (top - bottom)
+    let sDepth:Float = 1.0 / (far - near)
     
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -211,7 +211,7 @@ func ortho2d(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:F
 //------------------------------------------------------------------------------
 func ortho2d(origin:V3f, size:V3f) -> M4f
 {
-    return ortho2d(origin.x, origin.y, origin.z, size.x, size.y, size.z)
+    return ortho2d(origin.x, right: origin.y, bottom: origin.z, top: size.x, near: size.y, far: size.z)
 }
 //------------------------------------------------------------------------------
 // mark Public - Transformations - Off-Center Orthographic
@@ -219,9 +219,9 @@ func ortho2d(origin:V3f, size:V3f) -> M4f
 func ortho2d_oc(left:Float, right:Float,
                     bottom:Float, top:Float, near:Float, far:Float) -> M4f
 {
-    var sLength:Float = 1.0 / (right - left)
-    var sHeight:Float = 1.0 / (top - bottom)
-    var sDepth:Float = 1.0 / (far - near)
+    let sLength:Float = 1.0 / (right - left)
+    let sHeight:Float = 1.0 / (top - bottom)
+    let sDepth:Float = 1.0 / (far - near)
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
     var R:V4f = zeroVector4
@@ -238,16 +238,16 @@ func ortho2d_oc(left:Float, right:Float,
 //------------------------------------------------------------------------------
 func ortho2d_oc(origin:V3f, size:V3f) -> M4f
 {
-    return ortho2d_oc(origin.x, origin.y, origin.z, size.x, size.y, size.z)
+    return ortho2d_oc(origin.x, right: origin.y, bottom: origin.z, top: size.x, near: size.y, far: size.z)
 }
 //------------------------------------------------------------------------------
 // mark Public - Transformations - frustum
 //------------------------------------------------------------------------------
 func frustum(fovH:Float, fovV:Float, near:Float, far:Float) -> M4f
 {
-    var width:Float = 1.0 / tan(radians(0.5 * fovH))
-    var height:Float = 1.0 / tan(radians(0.5 * fovV))
-    var sDepth:Float = far / ( far - near )
+    let width:Float = 1.0 / tan(radians(0.5 * fovH))
+    let height:Float = 1.0 / tan(radians(0.5 * fovV))
+    let sDepth:Float = far / ( far - near )
     
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -265,10 +265,10 @@ func frustum(fovH:Float, fovV:Float, near:Float, far:Float) -> M4f
 //------------------------------------------------------------------------------
 func frustum(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float) -> M4f
 {
-    var width:Float = right - left
-    var height:Float = top - bottom
-    var depth:Float = far - near
-    var sDepth:Float = far / depth
+    let width:Float = right - left
+    let height:Float = top - bottom
+    let depth:Float = far - near
+    let sDepth:Float = far / depth
     
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4
@@ -286,10 +286,10 @@ func frustum(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:F
 //------------------------------------------------------------------------------
 func frustum_oc(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float) -> M4f
 {
-    var sWidth:Float = 1.0 / (right - left)
-    var sHeight:Float = 1.0 / (top - bottom)
-    var sDepth:Float = far / (far - near)
-    var dNear:Float = 2.0 * near
+    let sWidth:Float = 1.0 / (right - left)
+    let sHeight:Float = 1.0 / (top - bottom)
+    let sDepth:Float = far / (far - near)
+    let dNear:Float = 2.0 * near
     
     var P:V4f = zeroVector4
     var Q:V4f = zeroVector4

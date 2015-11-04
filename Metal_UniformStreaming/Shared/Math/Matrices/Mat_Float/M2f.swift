@@ -7,7 +7,7 @@ let a_11:Int = 0;  let a_12:Int = 2
 let a_21:Int = 1;  let a_22:Int = 3
 
 //------------------------------------------------------------------------------
-struct M2f : Printable, DebugPrintable
+struct M2f : CustomStringConvertible, CustomDebugStringConvertible
 {
     var col0 = V2f(1.0, 0.0)
     var col1 = V2f(0.0, 1.0)

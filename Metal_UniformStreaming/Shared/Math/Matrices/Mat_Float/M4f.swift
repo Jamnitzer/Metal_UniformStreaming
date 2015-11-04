@@ -9,7 +9,7 @@ let _a31:Int = 2; let _a32:Int = 6; let _a33:Int = 10; let _a34:Int = 14
 let _a41:Int = 3; let _a42:Int = 7; let _a43:Int = 11; let _a44:Int = 15
 
 //------------------------------------------------------------------------------
-struct M4f : Printable, DebugPrintable
+struct M4f : CustomStringConvertible, CustomDebugStringConvertible
 {
     var col0 = V4f(1.0, 0.0, 0.0, 0.0)
     var col1 = V4f(0.0, 1.0, 0.0, 0.0)

@@ -8,7 +8,7 @@ let _b21:Int = 1;   let _b22:Int = 4;   let _b23:Int = 7
 let _b31:Int = 2;   let _b32:Int = 5;   let _b33:Int = 8
 
 //------------------------------------------------------------------------------
-struct M3f : Printable, DebugPrintable
+struct M3f : CustomStringConvertible, CustomDebugStringConvertible
 {
     var col0 = V3f(1.0, 0.0, 0.0)
     var col1 = V3f(0.0, 1.0, 0.0)
